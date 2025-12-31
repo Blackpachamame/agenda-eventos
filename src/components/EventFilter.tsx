@@ -38,7 +38,7 @@ export default function EventFilter({
             className="border border-gray-500 rounded"
             value={selectedType ?? ""}
             onChange={(e) => onTypeChange(e.target.value ? (e.target.value as ByType) : undefined)}>
-            <option value="">Todas</option>
+            <option value="">Todos</option>
             <option value="meeting">Reunión</option>
             <option value="call">Llamada</option>
             <option value="reminder">Recordatorio</option>
