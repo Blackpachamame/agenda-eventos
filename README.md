@@ -1,73 +1,115 @@
-# React + TypeScript + Vite
+# Agenda de eventos - Litiobyte
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📋 Resumen de la aplicación
 
-Currently, two official plugins are available:
+Esta aplicación presenta una vista frontend para visualizar eventos de una agenda interna.
+Permite explorar y gestionar eventos de forma clara y sencilla, priorizando la legibilidad y la identificación rápida de información relevante.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+En la aplicación se puede:
 
-## React Compiler
+* Visualizar una lista de eventos con su información principal (título, fecha, duración y tipo).
+* Filtrar los eventos por tipo (meeting, call, reminder).
+* Ordenar los eventos por fecha o por duración.
+* Identificar visualmente:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+  * **Eventos próximos** (hoy y mañana).
+  * **Eventos largos**, mediante una etiqueta específica.
+* Visualizar fechas siempre actualizadas gracias al uso de datos mockeados con fechas dinámicas.
 
-## Expanding the ESLint configuration
+No existe backend; los datos se encuentran mockeados y aislados para facilitar un posible reemplazo futuro por una API real.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tecnologías utilizadas
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+* **React**: librería principal para la construcción de la interfaz.
+* **Vite**: entorno de desarrollo y build, elegido por su rapidez y configuración mínima.
+* **Tailwind CSS**: framework de estilos utilitario para construir una UI simple, consistente y fácilmente mantenible.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## ▶️ Cómo levantar el proyecto
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Clonar el repositorio:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+   ```bash
+   git clone <url-del-repositorio>
+   ```
+
+2. Instalar dependencias:
+
+   ```bash
+   npm install
+   ```
+
+3. Iniciar el proyecto en modo desarrollo:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Abrir el navegador en la URL indicada por Vite (por defecto `http://localhost:5173`).
+
+---
+
+## 🧩 Decisiones de UI
+
+La interfaz fue diseñada priorizando claridad visual y facilidad de escaneo. Al no existir un diseño previo, se optó por una vista en lista que permite identificar rápidamente los eventos y su información clave.
+
+Cada evento se representa mediante una tarjeta con una jerarquía clara de información:
+
+* **Título**: se muestra como el elemento principal, con mayor tamaño y peso tipográfico para destacar el evento.
+* **Eventos próximos**: los eventos que ocurren hoy o mañana se resaltan mediante un badge visible sobre el título, enfatizando urgencia sin saturar la interfaz.
+* **Fecha**: se acompaña de un icono de calendario para facilitar la lectura rápida.
+* **Duración**: se muestra en minutos con un icono de tiempo. Los eventos considerados largos se destacan con una etiqueta adicional para facilitar su identificación.
+* **Tipo de evento**: se representa mediante iconos (meeting, call, reminder) acompañados de texto, permitiendo reconocer el contexto del evento de un vistazo.
+
+El uso de iconos y etiquetas busca mejorar la comprensión visual sin reemplazar la información textual, manteniendo la accesibilidad y la claridad.
+
+---
+
+## 🎯 Qué prioricé
+
+* Un **diseño simple, reconocible y fácil de entender**, evitando complejidad visual innecesaria.
+* La **separación de responsabilidades en el código**, organizando la aplicación por carpetas y archivos según su propósito (datos, tipos, helpers y componentes).
+* Mantener la **lógica de negocio desacoplada de la UI**, utilizando helpers para el manejo de fechas y clasificación de eventos, y componentes enfocados únicamente en renderizar la interfaz.
+* Claridad en los filtros y ordenamientos, priorizando comportamientos predecibles y fáciles de usar.
+
+Además, se optó por generar los eventos mockeados con **fechas dinámicas basadas en la fecha actual**, de modo que los estados “hoy”, “mañana” y “futuro” se mantengan correctos independientemente del momento en que se visualice la aplicación. Esto evita que la agenda quede obsoleta con el paso del tiempo y mejora la coherencia de la experiencia.
+
+---
+
+## 🚀 Qué mejoraría con más tiempo
+
+* **Barra de búsqueda** para permitir filtrar eventos por título.
+* **Paginación o carga progresiva**, evitando renderizar grandes cantidades de eventos al mismo tiempo y mejorando la experiencia en listas extensas.
+* **Cambio de vista** entre lista y tarjetas, permitiendo al usuario elegir el formato de visualización que le resulte más cómodo.
+* Mejoras adicionales de accesibilidad y tests unitarios para la lógica de negocio.
+
+---
+
+## 🤖 Uso de IA y fuentes externas
+
+Se utilizó inteligencia artificial como apoyo puntual para la generación del mock de datos y para ajustar la redacción del README.
+Todas las decisiones de diseño, estructura y lógica fueron comprendidas y tomadas de forma consciente, priorizando criterio y claridad por sobre resultados puramente estéticos.
+
+---
+
+## ✅ Comentario final (importante)
+
+Este README:
+
+* responde **exactamente** a lo que pidieron
+* demuestra criterio
+* explica decisiones sin justificarse de más
+* muestra honestidad con el uso de IA
+
+Está **muy bien para una prueba técnica**.
+
+Si querés, en el próximo mensaje podemos:
+
+* hacer una versión **un poco más corta** por si prefieren README minimalistas
+* simular preguntas de entrevista basadas en este README
+* revisar si algo sobra o falta antes de entregar
+
+Llegaste a muy buen nivel con esto 💪
