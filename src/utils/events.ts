@@ -19,10 +19,10 @@ export const addDays = (date: Date, days: number) => {
 };
 
 /**
- * Verifica si es un evento largo
+ * Verifica si es un evento largo según la duración del mismo
  */
-export const isLongEvent = (estimatedTime: number): boolean => {
-  return estimatedTime > 60;
+export const isLongEvent = (duration: number): boolean => {
+  return duration > 60;
 };
 
 /**
@@ -35,12 +35,8 @@ export const getDateStatus = (eventDate: string): DateStatus => {
   tomorrowDate.setDate(tomorrowDate.getDate() + 1);
   const tomorrow = normalizeDate(tomorrowDate);
 
-  if (event.getTime() === today.getTime()) {
-    return "today";
-  }
-
-  if (event.getTime() === tomorrow.getTime()) {
-    return "tomorrow";
+  if (event.getTime() === today.getTime() || event.getTime() === tomorrow.getTime()) {
+    return "next";
   }
 
   return "future";

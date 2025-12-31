@@ -1,7 +1,7 @@
 import type { Event } from "../types/events";
-import { addDays, normalizeDate } from "../utils/eventsHelpers";
+import { addDays } from "../utils/events";
 
-const today = normalizeDate(new Date());
+const today = new Date();
 
 export const eventsMock: Event[] = [
   {
@@ -14,14 +14,14 @@ export const eventsMock: Event[] = [
   {
     id: "2",
     title: "Llamada con proveedor",
-    date: addDays(today, 0).toISOString(),
+    date: addDays(today, 2).toISOString(),
     duration: 60,
     type: "call",
   },
   {
     id: "3",
     title: "Planificación sprint",
-    date: addDays(today, 0).toISOString(),
+    date: today.toISOString(),
     duration: 120,
     type: "meeting",
   },

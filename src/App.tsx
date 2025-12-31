@@ -1,11 +1,8 @@
 import "./App.css";
+import EventPage from "./components/EventPage";
 
 function App() {
-  return (
-    <>
-      <p className="text-red-400">Click on the Vite and React logos to learn more</p>
-    </>
-  );
+  return <EventPage />;
 }
 
 export default App;

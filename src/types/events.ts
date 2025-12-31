@@ -1,5 +1,5 @@
 export type EventType = "meeting" | "call" | "reminder";
-export type DateStatus = "today" | "tomorrow" | "future";
+export type DateStatus = "next" | "future";
 
 export type Event = {
   id: string;
