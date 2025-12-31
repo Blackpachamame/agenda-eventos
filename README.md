@@ -92,24 +92,3 @@ Además, se optó por generar los eventos mockeados con **fechas dinámicas basa
 
 Se utilizó inteligencia artificial como apoyo puntual para la generación del mock de datos y para ajustar la redacción del README.
 Todas las decisiones de diseño, estructura y lógica fueron comprendidas y tomadas de forma consciente, priorizando criterio y claridad por sobre resultados puramente estéticos.
-
----
-
-## ✅ Comentario final (importante)
-
-Este README:
-
-* responde **exactamente** a lo que pidieron
-* demuestra criterio
-* explica decisiones sin justificarse de más
-* muestra honestidad con el uso de IA
-
-Está **muy bien para una prueba técnica**.
-
-Si querés, en el próximo mensaje podemos:
-
-* hacer una versión **un poco más corta** por si prefieren README minimalistas
-* simular preguntas de entrevista basadas en este README
-* revisar si algo sobra o falta antes de entregar
-
-Llegaste a muy buen nivel con esto 💪
